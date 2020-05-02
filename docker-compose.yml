@@ -1,0 +1,25 @@
+version: '3.6'
+services:
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - pool-database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpwd1
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: pool
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: userpwd1
+
+  pool-server:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+
+volumes:
+  pool-database:
