@@ -1,9 +1,30 @@
 from flask import Flask
+import flask
+import player_service
 
 app = Flask(__name__)
 
 
-@app.route("/players")
+@app.route("/division", methods=["POST"])
+def create_division():
+    return "Here's your response!"
+
+
+@app.route("/league", methods=["GET"])
+def get_league_data():
+    league = league_service.get_league_data()
+    return flask.jsonify({
+        "league": league
+    })
+
+
+@app.route("/players", methods=["GET"])
 def get_all_players():
     app.logger.info("Getting all players")
-    return "Here's your response!"
+    players = player_service.get_all_players()
+    app.logger.info(f"Returning players: {players}")
+    return flask.jsonify({
+        "players": players
+    })
+
+
