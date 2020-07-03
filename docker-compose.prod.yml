@@ -1,0 +1,23 @@
+version: '3.6'
+services:
+
+  db:
+    build: magpiearmy/pool-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pool-database:/var/lib/postgres
+    environment:
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: userpwd1
+      POSTGRES_DB: pool
+
+  app:
+    build: magpiearmy/pool-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+volumes:
+  pool-database:
