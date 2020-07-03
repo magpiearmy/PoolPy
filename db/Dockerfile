@@ -1,3 +1,3 @@
-FROM mysql:8.0.20
+FROM postgres:12.3
 
-COPY initdb.sql /docker-entrypoint-initdb.d
+#COPY initdb.sql /docker-entrypoint-initdb.d

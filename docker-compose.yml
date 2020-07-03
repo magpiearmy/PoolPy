@@ -1,25 +1,24 @@
 version: '3.6'
 services:
 
-  mysql:
-    build: db
+  db:
+    build:
+      context: db
     ports:
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-      - pool-database:/var/lib/mysql
+      - pool-database:/var/lib/postgres
     environment:
-      MYSQL_ROOT_PASSWORD: rootpwd1
-      MYSQL_ROOT_HOST: '%'
-      MYSQL_DATABASE: pool
-      MYSQL_USER: user1
-      MYSQL_PASSWORD: userpwd1
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: userpwd1
+      POSTGRES_DB: pool
 
-  pool-server:
-    build: .
+  app:
+    build: app
     ports:
       - "5000:5000"
     depends_on:
-      - mysql
+      - db
 
 volumes:
   pool-database:
