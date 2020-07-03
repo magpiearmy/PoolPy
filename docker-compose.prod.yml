@@ -2,7 +2,7 @@ version: '3.6'
 services:
 
   db:
-    build: magpiearmy/pool-db
+    image: magpiearmy/pool-db
     ports:
       - "5432:5432"
     volumes:
@@ -13,7 +13,7 @@ services:
       POSTGRES_DB: pool
 
   app:
-    build: magpiearmy/pool-app
+    image: magpiearmy/pool-app
     ports:
       - "5000:5000"
     depends_on:
