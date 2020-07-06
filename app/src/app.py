@@ -1,6 +1,8 @@
 from flask import Flask
 import flask
 import player_service
+import league_service
+import team_service
 
 app = Flask(__name__)
 
@@ -28,3 +30,11 @@ def get_all_players():
     })
 
 
+@app.route("/team", methods=["POST"])
+def create_team():
+    app.logger.info("Creating team")
+    players = team_service.create_team()
+    app.logger.info(f"Returning players: {players}")
+    return flask.jsonify({
+        "players": players
+    })
