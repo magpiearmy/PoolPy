@@ -1,6 +1,16 @@
 from connection import DatabaseConnection
 
 
+def map_row_to_player(row):
+    (player_id, first_name, last_name, team_id) = row
+    return {
+        "player_id": player_id,
+        "first_name": first_name,
+        "last_name": last_name,
+        "team_id": team_id
+    }
+
+
 def get_all_players():
     sql = "SELECT player_id, first_name, last_name, team_id FROM player;"
     with DatabaseConnection() as db:
@@ -8,7 +18,7 @@ def get_all_players():
         cursor.execute(sql)
         rows = cursor.fetchall()
         cursor.close()
-        return rows
+        return [map_row_to_player(row) for row in rows]
 
 
 def add_player(player):
