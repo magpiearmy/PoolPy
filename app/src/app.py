@@ -3,6 +3,7 @@ import flask
 import player_service
 import league_service
 import team_service
+import fixtures_service
 
 app = Flask(__name__)
 
@@ -37,4 +38,14 @@ def create_team():
     app.logger.info(f"Returning players: {players}")
     return flask.jsonify({
         "players": players
+    })
+
+
+@app.route("/fixtures", methods=["GET"])
+def get_fixtures_and_results():
+    app.logger.info("Retrieving all fixtures and results")
+    fixtures = fixtures_service.get_all_fixtures()
+    app.logger.info(f"Returning fixtures and results: {fixtures}")
+    return flask.jsonify({
+        "fixtures": fixtures
     })

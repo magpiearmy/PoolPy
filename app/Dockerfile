@@ -15,11 +15,7 @@ RUN pipenv install --system
 
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/gunicorn.conf /etc/nginx/conf.d/default.conf
-
 COPY supervisor/supervisord.conf /etc/supervisord.conf
-COPY supervisor/conf.d/gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
-COPY supervisor/conf.d/nginx.conf /etc/supervisor/conf.d/nginx.conf
-
 COPY src ./
 
 EXPOSE 5000

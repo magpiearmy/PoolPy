@@ -14,6 +14,6 @@ def get_divisions(league_id):
 def map_row_to_division(row):
     (division_id, division_name) = row
     return {
-        "division_id": division_id,
-        "division_name": division_name,
+        "id": division_id,
+        "name": division_name,
     }
