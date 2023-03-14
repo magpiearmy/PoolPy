@@ -1,13 +1,13 @@
-FROM python:3-alpine
+FROM python:3.11-slim
 
-RUN apk update && \
-    apk add \
+RUN apt update && \
+    apt install -y \
         nginx \
-        supervisor && \
-    apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
-    apk add --no-cache postgresql-libs
+        supervisor
 
 RUN pip3 install pipenv
+RUN useradd nginx
+
 
 WORKDIR /app
 COPY ./Pipfile* ./

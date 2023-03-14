@@ -14,8 +14,8 @@ def create_division():
 
 
 @app.route("/league", methods=["GET"])
-def get_league_data():
-    league = league_service.get_league_data()
+def get_league():
+    league = league_service.get_league()
     return flask.jsonify({
         "league": league
     })
