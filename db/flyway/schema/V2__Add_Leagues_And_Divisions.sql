@@ -12,7 +12,7 @@ VALUES
 
 WITH div_teams (team_name, pub_name, division_name) AS (
 VALUES
-    ('Parky Travs', 'Travellers', 'Division One'),
+    ('Golden Lion', 'The Golden Lion', 'Division One'),
     ('The Taverners', 'The Pudsey Tavern', 'Division One'),
     ('147 Mavericks', '147 Sports Bar', 'Division One'),
     ('147 Underdogs', '147 Sports Bar', 'Division One'),
@@ -46,7 +46,7 @@ INSERT INTO team_fixture
 (home_team_id, away_team_id, fixture_date)
 VALUES
 (
-    (SELECT team_id FROM team WHERE team_name='Parky Travs'),
+    (SELECT team_id FROM team WHERE team_name='Golden Lion'),
     (SELECT team_id FROM team WHERE team_name='The Taverners'),
     '2020-01-01'
 ),
@@ -57,7 +57,7 @@ VALUES
 ),
 (
     (SELECT team_id FROM team WHERE team_name='147 Mavericks'),
-    (SELECT team_id FROM team WHERE team_name='Parky Travs'),
+    (SELECT team_id FROM team WHERE team_name='Golden Lion'),
     '2020-01-08'
 ),
 (
@@ -66,7 +66,7 @@ VALUES
     '2020-01-08'
 ),
 (
-    (SELECT team_id FROM team WHERE team_name='Parky Travs'),
+    (SELECT team_id FROM team WHERE team_name='Golden Lion'),
     (SELECT team_id FROM team WHERE team_name='The Taverners'),
     '2020-01-15'
 ),
